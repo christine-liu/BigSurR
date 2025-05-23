@@ -11,7 +11,7 @@
 depth.scaling <- function(seuratob,  assay = "RNA", counts.slot="counts"){
 
   DefaultAssay(object = seuratob) <- assay
-  raw.counts <- as.matrix(GetAssayData(object=seuratob, slot=counts.slot))
+  raw.counts <- as.matrix(seuratob[["RNA"]]$counts)
 
   if(!(all(raw.counts==floor(raw.counts)))){
     stop("Non-integer counts data detected. Please supply unnormalized data.")
